@@ -92,4 +92,25 @@ fn main() {
     println!("Name: {name}, Age: {age}, Department: {department}");
 
     dbg!(employee);
+
+    let exclusive_range = 1..31; // 1 to 30
+    let inclusive_range = 1..=31; // 1 to 31
+    println!("{exclusive_range:?}");
+    println!("{inclusive_range:?}");
+
+    for number in exclusive_range {
+        println!("{number}");
+    }
+
+    let letters = 'b'..'f';
+
+    for letter in letters {
+        println!("{letter}");
+    }
+
+    let colors = ["Red", "Green", "Yellow"];
+
+    for color in colors {
+        println!("Color: {color}");
+    }
 }
