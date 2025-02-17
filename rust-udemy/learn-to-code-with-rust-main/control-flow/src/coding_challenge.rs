@@ -27,3 +27,37 @@ Implement two solutions/functions for the problem.
 The first solution should not use recursion.
 The second solution should use recursion.
 */
+
+fn color_to_number(color: &str) -> i32 {
+    match color {
+        "red" => 1,
+        "green" => 2,
+        "blue" => 3,
+        _ => 0,
+    }
+}
+
+fn factorial_non_recursive(mut n: i32) -> i32 {
+    let mut res = 1;
+
+    while n > 0 {
+        res *= n;
+        n -= 1;
+    }
+
+    res
+}
+
+fn factorial(n: i32) -> i32 {
+    if n == 1 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
+fn main() {
+    println!("{} {}", color_to_number("red"), color_to_number("asdf"));
+    println!("Factorial of 5: {}", factorial_non_recursive(5));
+    println!("Factorial of 5: {}", factorial(5));
+}
