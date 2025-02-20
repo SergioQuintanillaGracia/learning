@@ -25,4 +25,38 @@ fn main() {
     let my_heap_reference = &my_heap_value;
     println!("{}", *my_heap_reference);
     println!("{}", my_heap_reference);
+
+    let ice_cream = "Cookies and Cream";
+    let dessert = ice_cream;
+
+    let oranges = String::from("Oranges");
+    print_my_value(oranges);
+    // println!("{oranges} is still valid");
+
+    let mut burger = String::from("Burger");
+    add_fries(burger);
+
+    let cake = bake_cake();
+    println!("I now have a {cake} cake");
+
+    let current_meal = String::new();
+    add_flour(current_meal);
+}
+
+fn add_flour(mut meal: String) {
+    meal.push_str("Add flour");
+}
+
+fn bake_cake() -> String {
+    let cake = String::from("Chocolate Mousse");
+    cake
+}
+
+fn add_fries(mut meal: String) {
+    meal.push_str(" and fries");
+    println!("{meal}");
+}
+
+fn print_my_value(value: String) {
+    println!("Your value is {value}");
 }
