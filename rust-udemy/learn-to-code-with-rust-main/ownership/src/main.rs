@@ -39,11 +39,22 @@ fn main() {
     let cake = bake_cake();
     println!("I now have a {cake} cake");
 
-    let current_meal = String::new();
-    add_flour(current_meal);
+    let mut current_meal = String::new();
+    add_flour(&mut current_meal);
+
+    show_my_meal(&current_meal);
+
+    let mut car = String::from("Red");
+    let ref1 = &mut car;
+    car.push_str(" car");
+    println!("{ref1}");
 }
 
-fn add_flour(mut meal: String) {
+fn show_my_meal(meal: &String) {
+    println!("Meal: {meal}");
+}
+
+fn add_flour(meal: &mut String) {
     meal.push_str("Add flour");
 }
 
