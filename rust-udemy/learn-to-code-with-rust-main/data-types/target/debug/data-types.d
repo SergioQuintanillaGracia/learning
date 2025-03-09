@@ -1,0 +1,1 @@
+/home/sergio/Documents/GitHub/learning/rust-udemy/learn-to-code-with-rust-main/data-types/target/debug/data-types: /home/sergio/Documents/GitHub/learning/rust-udemy/learn-to-code-with-rust-main/data-types/src/main.rs
