@@ -45,9 +45,31 @@ fn main() {
     show_my_meal(&current_meal);
 
     let mut car = String::from("Red");
-    let ref1 = &mut car;
-    car.push_str(" car");
-    println!("{ref1}");
+    // let ref1 = &mut car;
+    // car.push_str(" car");
+    // println!("{ref1}");
+
+    let mut coffee: String = String::from("Mocha");
+    let a = &mut coffee;
+    println!("{a}");
+    let b = a; // b replaces a, a no longer exists
+    println!("{b}");
+
+    let city = create_city();
+    println!("{city}");
+
+    let registrations = [true, false, true];
+    let first = registrations[0];
+    println!("{first} and {registrations:?}");
+
+    let languages = [String::from("Rust"), String::from("Python")];
+    let first = &languages[0];
+    println!("{first} and {languages:?}");
+}
+
+fn create_city() -> String {
+    let city = String::from("New York");
+    city
 }
 
 fn show_my_meal(meal: &String) {

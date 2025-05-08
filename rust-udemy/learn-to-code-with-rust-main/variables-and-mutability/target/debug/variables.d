@@ -1,1 +1,0 @@
-/home/sergio/Documents/GitHub/learning/rust-udemy/learn-to-code-with-rust-main/variables-and-mutability/target/debug/variables: /home/sergio/Documents/GitHub/learning/rust-udemy/learn-to-code-with-rust-main/variables-and-mutability/src/main.rs
