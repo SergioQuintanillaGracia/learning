@@ -1,3 +1,4 @@
+import json
 import pyperclip
 from random import choice, shuffle, randint
 from tkinter import *
@@ -34,20 +35,53 @@ def save():
     email = entry_email.get()
     password = entry_password.get()
 
+    new_data = {
+        website: {
+            "email": email,
+            "password": password,
+        }
+    }
+
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showinfo(title="Fill every field", message="Please, fill every field!")
         return
 
-    save_confirmed = messagebox.askokcancel(title=website,message=f"These are the details entered: \nEmail: {email}\n"
-                                                 f"Password: {password}\nIs it ok to save?")
-    if not save_confirmed:
-        return
+    try:
+        with open("data.json", "r") as f:
+            # Load and update data
+            data = json.load(f)
+            data.update(new_data)
 
-    with open("data.txt", "a") as f:
-        f.write(f"{website} | {email} | {password}\n")
+        with open("data.json", "w") as f:
+            # Dump updated data to file
+            json.dump(data, f, indent=4)
+
+    except FileNotFoundError:
+        with open("data.json", "w") as f:
+            json.dump(new_data, f, indent=4)
 
     entry_website.delete(0, END)
     entry_password.delete(0, END)
+
+# ----------------------- SEARCHING PASSWORDS -------------------------- #
+def search():
+    website = entry_website.get().strip()
+
+    if len(website) == 0:
+        messagebox.showinfo(title="Empty website", message="The website field is empty, enter a website")
+        return
+
+    try:
+        with open("data.json", "r") as f:
+            data = json.load(f)
+            email = data[website]["email"]
+            password = data[website]["password"]
+
+    except (FileNotFoundError, KeyError):
+        messagebox.showinfo(title="Error", message=f"There are no credentials stored for website \"{website}\"")
+
+    else:
+        messagebox.showinfo(title=f"{website} credentials", message=f"Website: {website}\nEmail: {email}\nPassword: {password}")
 
 # ---------------------------- UI SETUP ------------------------------- #
 root = Tk()
@@ -65,9 +99,11 @@ canvas.create_image(100, 100, image=logo_img)
 # Website
 label_website = Label(text="Website: ")
 label_website.grid(row=1, column=0)
-entry_website = ttk.Entry(width=35)
+entry_website = ttk.Entry(width=22)
 entry_website.focus()
-entry_website.grid(row=1, column=1, columnspan=2, pady=4)
+entry_website.grid(row=1, column=1, pady=4)
+button_search = ttk.Button(text="Search", command=search, width=10)
+button_search.grid(row=1, column=2)
 
 # Email / Username
 label_email = Label(text="Email / Username: ")
