@@ -17,6 +17,7 @@ time.sleep(2)
 
 cookie_button = driver.find_element(By.ID, "bigCookie")
 
+
 products_area = driver.find_element(By.CSS_SELECTOR, "#products")
 cookie_text = driver.find_element(By.CSS_SELECTOR, "#cookies")
 
